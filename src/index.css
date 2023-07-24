@@ -1,0 +1,17 @@
+@tailwind utilities;
+@tailwind components;
+@layer components {
+   .text-to-yellow-transition {
+      @apply hover:text-[#fac433] hover:no-underline transition-colors duration-300;
+   }
+   .text-to-blue-transition {
+      @apply hover:text-[#2d6fad] hover:no-underline transition-colors duration-300 hover:font-bold;
+   }
+   .text-light {
+      @apply text-[#ababab];
+   }
+}
+
+th {
+   font-size: 0.9rem;
+}
