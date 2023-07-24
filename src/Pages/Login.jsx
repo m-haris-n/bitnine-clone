@@ -10,6 +10,7 @@ import {
    Group,
    Button,
    useMantineTheme,
+   Loader,
 } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
 import MyFooter from "./common/MyFooter";
@@ -17,10 +18,12 @@ import { useForm } from "@mantine/form";
 import { login } from "../api/auth";
 import { tokenAtom } from "../atoms/userAtom";
 import { useAtom } from "jotai";
+import { useState } from "react";
 
 export default function Login() {
    const theme = useMantineTheme();
    const nav = useNavigate();
+   const [loading, setLoading] = useState(0);
 
    const [token, setToken] = useAtom(tokenAtom);
 
@@ -32,10 +35,19 @@ export default function Login() {
    });
 
    const handleLogin = (data) => {
-      login(data).then((res) => {
-         setToken(res.data.token);
-         nav("/profile");
-      });
+      setLoading(1);
+      login(data)
+         .then((res) => {
+            setToken(res.data.token);
+            setLoading(0);
+            nav("/profile");
+         })
+         .catch((err) => {
+            console.log(err.response.status);
+
+            if (err.response.status) setLoading(2);
+            else setLoading(3);
+         });
    };
 
    return (
@@ -117,8 +129,17 @@ export default function Login() {
                   color={"brand.5"}
                   sx={{ ":hover": { background: theme.colors.brand[5] } }}
                >
-                  Sign in
+                  {loading == 1 ? (
+                     <Loader
+                        color={"white"}
+                        size={"sm"}
+                     />
+                  ) : (
+                     "Sign in"
+                  )}
                </Button>
+               {loading == 2 && <Text color={"red"}>Wrong credentials.</Text>}
+               {loading == 3 && <Text color={"red"}>Something went wrong</Text>}
             </Paper>
          </Container>
          <MyFooter />

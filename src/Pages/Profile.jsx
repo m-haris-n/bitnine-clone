@@ -2,7 +2,9 @@ import {
    Box,
    Button,
    Container,
+   Loader,
    PasswordInput,
+   Text,
    TextInput,
    Title,
    useMantineTheme,
@@ -21,6 +23,7 @@ export default function Profile() {
    const [user, setUser] = useAtom(userAtom);
    const [token, setToken] = useAtom(tokenAtom);
    const [invalidate, setInvalidate] = useState(false);
+   const [loading, setLoading] = useState(0);
 
    const form = useForm({
       initialValues: {
@@ -33,28 +36,34 @@ export default function Profile() {
             value.length < 2 ? "Name must have at least 2 letters" : null,
          email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
          password: (value) =>
-            value.length < 6
+            value.length < 6 && value != 0
                ? "Password must have at least 6 characters"
                : null,
       },
    });
 
-   const handleUpdate = () => {
-      const data = form.getTransformedValues();
-      if (form.validate()) {
-         console.log(data);
-         editUserProfile(data)
-            .then((res) => {
-               console.log("success");
-               console.log(res);
-               form.setValues({ password: "" });
-            })
-            .catch((err) => {
-               console.log("failed");
-               console.log(err);
-            });
-         setInvalidate(true);
+   const handleUpdate = (vals) => {
+      setLoading(1);
+
+      let data = structuredClone(vals);
+      if (data.password.length == 0) {
+         delete data.password;
       }
+      console.log("data:", data);
+      editUserProfile(data)
+         .then((res) => {
+            console.log("success");
+            console.log(res);
+            form.setValues({ password: "" });
+            setLoading(0);
+            setDisabled(true);
+         })
+         .catch((err) => {
+            console.log("failed");
+            console.log(err);
+            setLoading(2);
+         });
+      setInvalidate(true);
    };
 
    const handleLogout = () => {
@@ -115,7 +124,14 @@ export default function Profile() {
                   variant={"white"}
                   onClick={handleLogout}
                >
-                  Log out
+                  {loading == 3 ? (
+                     <Loader
+                        color={"white"}
+                        size={"sm"}
+                     />
+                  ) : (
+                     "Log out"
+                  )}
                </Button>
             </Container>
          </Box>
@@ -170,9 +186,16 @@ export default function Profile() {
                         className={"text-to-yellow-transition"}
                         color={"brand.5"}
                         sx={{ ":hover": { background: theme.colors.brand[5] } }}
-                        onClick={handleUpdate}
+                        // onClick={handleUpdate}
                      >
-                        Save
+                        {loading == 1 ? (
+                           <Loader
+                              size={"sm"}
+                              color={"white"}
+                           />
+                        ) : (
+                           "Save"
+                        )}
                      </Button>
                   </Button.Group>
                ) : (
@@ -187,6 +210,7 @@ export default function Profile() {
                      </Button>
                   </div>
                )}
+               {loading == 2 && <Text color={"red"}>Something went wrong</Text>}
             </form>
          </Container>
       </div>

@@ -8,15 +8,18 @@ import {
    Container,
    Button,
    useMantineTheme,
+   Loader,
 } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
 import MyFooter from "./common/MyFooter";
 import { useForm } from "@mantine/form";
 import { register } from "../api/auth";
+import { useState } from "react";
 
 export default function Register() {
    const theme = useMantineTheme();
    const nav = useNavigate();
+   const [loading, setLoading] = useState(0);
 
    const form = useForm({
       initialValues: {
@@ -36,13 +39,16 @@ export default function Register() {
    });
 
    const handleRegister = (data) => {
+      setLoading(1);
       register(data)
          .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
+            setLoading(0);
             nav("/login");
          })
          .catch((err) => {
             console.log(err);
+            setLoading(2);
          });
    };
 
@@ -121,8 +127,18 @@ export default function Register() {
                   color={"brand.5"}
                   sx={{ ":hover": { background: theme.colors.brand[5] } }}
                >
-                  Register
+                  {loading == 1 ? (
+                     <Loader
+                        color={"white"}
+                        size={"sm"}
+                     />
+                  ) : (
+                     "Register"
+                  )}
                </Button>
+               {loading == 2 && (
+                  <Text color={"red"}>Something went wrong.</Text>
+               )}
             </Paper>
          </Container>
          <MyFooter />
