@@ -74,14 +74,16 @@ export default function Profile() {
    };
 
    useEffect(() => {
+      setLoading(0);
       getUserProfile()
          .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setUser(res.data);
             setInvalidate(false);
          })
          .catch((err) => {
-            console.log(err);
+            // console.log(err);
+            setLoading(2);
          });
    }, [setUser, invalidate]);
 
