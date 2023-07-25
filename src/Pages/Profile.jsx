@@ -49,18 +49,18 @@ export default function Profile() {
       if (data.password.length == 0) {
          delete data.password;
       }
-      console.log("data:", data);
+      // console.log("data:", data);
       editUserProfile(data)
          .then((res) => {
-            console.log("success");
-            console.log(res);
+            // console.log("success");
+            // console.log(res);
             form.setValues({ password: "" });
             setLoading(0);
             setDisabled(true);
          })
          .catch((err) => {
-            console.log("failed");
-            console.log(err);
+            // console.log("failed");
+            // console.log(err);
             setLoading(2);
          });
       setInvalidate(true);
@@ -88,7 +88,7 @@ export default function Profile() {
    }, [setUser, invalidate]);
 
    useEffect(() => {
-      console.log("user:", user);
+      // console.log("user:", user);
       form.setValues({ name: user.name });
       form.setValues({ email: user.email });
    }, [user]);

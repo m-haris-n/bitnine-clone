@@ -74,7 +74,7 @@ export default function Home() {
             </section>
             <div
                className={
-                  "flex flex-row items-center justify-center gap-12 mb-28"
+                  "flex flex-row items-center justify-center gap-4 md:gap-12 mb-28"
                }
             >
                <Button

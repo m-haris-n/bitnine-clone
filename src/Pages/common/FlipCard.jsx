@@ -6,7 +6,7 @@ export default function FlipCard({ frontText, children }) {
    const flipBoxSx = {
       backgroundColor: "white",
       width: "100%",
-      height: 88,
+
       perspective: 1000,
       ":hover .inner-box": {
          transform: "rotateY(180deg)",
@@ -16,7 +16,7 @@ export default function FlipCard({ frontText, children }) {
       position: "relative",
       width: "100%",
       height: "100%",
-      textAlign: "center",
+      textAlign: "left",
       transition: "transform 0.8s",
       transformStyle: "preserve-3d",
    };
@@ -26,7 +26,6 @@ export default function FlipCard({ frontText, children }) {
       height: "100%",
       backfaceVisibility: "hidden",
       background: "white",
-
       border: "2px solid " + theme.colors.blue[5],
       borderRadius: 10,
    };
@@ -40,7 +39,10 @@ export default function FlipCard({ frontText, children }) {
       borderRadius: 10,
    };
    return (
-      <Box sx={flipBoxSx}>
+      <Box
+         sx={flipBoxSx}
+         className={"h-[100px] md:h-[88px]"}
+      >
          <Box
             sx={innerBoxSx}
             className={"inner-box"}
@@ -54,7 +56,7 @@ export default function FlipCard({ frontText, children }) {
             <Box
                sx={backSx}
                className={
-                  "flex items-center justify-center text-white text-left"
+                  "flex items-center justify-start text-white text-left"
                }
             >
                {children}

@@ -43,7 +43,7 @@ export default function Login() {
             nav("/profile");
          })
          .catch((err) => {
-            console.log(err.response.status);
+            // console.log(err.response.status);
 
             if (err.response.status) setLoading(2);
             else setLoading(3);

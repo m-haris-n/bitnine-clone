@@ -47,7 +47,7 @@ export default function Register() {
             nav("/login");
          })
          .catch((err) => {
-            console.log(err);
+            // console.log(err);
             setLoading(2);
          });
    };

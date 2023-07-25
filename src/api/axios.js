@@ -16,7 +16,7 @@ axiosPrivate.interceptors.request.use(
          .getItem("authToken")
          ?.replace('"', "")
          .replace('"', "");
-      console.log(`Token ${authToken}`);
+      // console.log(`Token ${authToken}`);
       if (authToken) {
          config.headers.Authorization = `Token ${authToken}`;
       }
