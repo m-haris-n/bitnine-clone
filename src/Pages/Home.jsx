@@ -21,6 +21,7 @@ import agensmanager from "../assets/agensmanager.png";
 
 import { useState } from "react";
 import FlipCard from "./common/FlipCard";
+import HoverCard from "./common/HoverCard";
 
 export default function Home() {
    const [hoverToggle, setHoverToggle] = useState(0);
@@ -152,124 +153,147 @@ export default function Home() {
                </Text>
                <div
                   className={
-                     "w-full flex flex-col lg:flex-row justify-between items-center gap-6"
+                     "w-full flex flex-col lg:flex-row justify-between items-center gap-6 text-left"
                   }
                >
                   <div
                      className={
-                        "group relative py-8 px-14 border-[1px] border-gray-300 border-solid rounded-[10px] hover:border-blue-600 hover:shadow-[0_0px_20px_0px_rgba(0,0,0,0.3)] hover:shadow-blue-300 transition-all duration-500 bg-white shadow-md"
+                        "group relative w-1/3 h-56 border-[1px] border-gray-300 border-solid rounded-[10px] \
+                         hover:border-blue-600 hover:shadow-[0_0px_20px_0px_rgba(0,0,0,0.3)] hover:shadow-blue-300 \
+                          transition-all duration-500 bg-white shadow-md "
                      }
                      onMouseOver={() => setHoverToggle(1)}
                      onMouseLeave={() => setHoverToggle(0)}
                   >
-                     <Image
+                     <div
                         className={
-                           "group-hover:opacity-0 transition-all duration-[500ms]"
+                           "w-full h-full px-16 flex justify-center items-center group-hover:opacity-0 transition-all duration-[500ms] absolute"
                         }
-                        height={160}
-                        src={pswdprofile}
-                     />
+                     >
+                        <Image
+                           // height={'100'}
+                           src={pswdprofile}
+                        />
+                     </div>
                      <Transition
                         mounted={hoverToggle == 1}
                         transition={"scale"}
                         duration={600}
                      >
                         {(styles) => (
-                           <ul
+                           <div
                               style={styles}
                               className={
-                                 " absolute text-sm p-0 top-[20%] transform transition-transform scale-0 group-hover:scale-100"
+                                 " absolute text-sm w-full h-full flex justify-center items-center"
                               }
                            >
-                              <li>
-                                 user password policy reinforces login security
-                              </li>
-                              <li>
-                                 excessive failed login attempts lock an account
-                              </li>
-                              <li>define rules for password complexity</li>
-                           </ul>
+                              <ul>
+                                 <li>
+                                    user password policy reinforces login
+                                    security
+                                 </li>
+                                 <li>
+                                    excessive failed login attempts lock an
+                                    account
+                                 </li>
+                                 <li>define rules for password complexity</li>
+                              </ul>
+                           </div>
                         )}
                      </Transition>
                   </div>
                   <div
                      className={
-                        "group relative py-8 px-14 border-[1px] border-gray-300 border-solid rounded-[10px] hover:border-blue-600 hover:shadow-[0_0px_20px_0px_rgba(0,0,0,0.3)] hover:shadow-blue-300 transition-all duration-500 bg-white shadow-md"
+                        "group relative w-1/3 h-56 border-[1px] border-gray-300 border-solid rounded-[10px] \
+                         hover:border-blue-600 hover:shadow-[0_0px_20px_0px_rgba(0,0,0,0.3)] hover:shadow-blue-300 \
+                          transition-all duration-500 bg-white shadow-md"
                      }
                      onMouseOver={() => setHoverToggle(2)}
                      onMouseLeave={() => setHoverToggle(0)}
                   >
-                     <Image
+                     <div
                         className={
-                           "group-hover:opacity-0 transition-all duration-[500ms]"
+                           "w-full h-full px-16 flex justify-center items-center group-hover:opacity-0 transition-all duration-[500ms] absolute"
                         }
-                        height={160}
-                        src={dataredaction}
-                     />
+                     >
+                        <Image
+                           // height={'100'}
+                           src={dataredaction}
+                        />
+                     </div>
                      <Transition
                         mounted={hoverToggle == 2}
                         transition={"scale"}
-                        duration={600}
+                        duration={500}
                      >
                         {(styles) => (
-                           <ul
+                           <div
                               style={styles}
                               className={
-                                 " absolute text-sm p-0 top-[20%] transform transition-transform scale-0 group-hover:scale-100"
+                                 " absolute text-sm w-full h-full flex justify-center items-center"
                               }
                            >
-                              <li>
-                                 enhanced data security of user <br /> personal
-                                 information
-                              </li>
-                              <li>
-                                 resolve privacy issues in <br /> preparation
-                                 for security audits
-                              </li>
-                              <li>
-                                 encryption or masking with <br />{" "}
-                                 unidentifiable special characters
-                              </li>
-                           </ul>
+                              <ul>
+                                 <li>
+                                    enhanced data security of user <br />{" "}
+                                    personal information
+                                 </li>
+                                 <li>
+                                    resolve privacy issues in <br /> preparation
+                                    for security audits
+                                 </li>
+                                 <li>
+                                    encryption or masking with <br />{" "}
+                                    unidentifiable special characters
+                                 </li>
+                              </ul>
+                           </div>
                         )}
                      </Transition>
                   </div>
                   <div
                      className={
-                        "group relative py-8 px-14 border-[1px] border-gray-300 border-solid rounded-[10px] hover:border-blue-600 hover:shadow-[0_0px_20px_0px_rgba(0,0,0,0.3)] hover:shadow-blue-300 transition-all duration-500 bg-white shadow-md"
+                        "group relative w-1/3 h-56 border-[1px] border-gray-300 border-solid rounded-[10px] \
+                         hover:border-blue-600 hover:shadow-[0_0px_20px_0px_rgba(0,0,0,0.3)] hover:shadow-blue-300 \
+                          transition-all duration-500 bg-white shadow-md"
                      }
                      onMouseOver={() => setHoverToggle(3)}
                      onMouseLeave={() => setHoverToggle(0)}
                   >
-                     <Image
+                     <div
                         className={
-                           "group-hover:opacity-0 transition-all duration-[500ms]"
+                           "w-full h-full px-16 flex justify-center items-center group-hover:opacity-0 transition-all duration-[500ms] absolute"
                         }
-                        height={160}
-                        src={audit}
-                     />
+                     >
+                        <Image
+                           // height={'100'}
+                           src={audit}
+                        />
+                     </div>
                      <Transition
                         mounted={hoverToggle == 3}
                         transition={"scale"}
-                        duration={600}
+                        duration={500}
                      >
                         {(styles) => (
-                           <ul
+                           <div
                               style={styles}
                               className={
-                                 " absolute text-sm p-0 top-[20%] transform transition-transform scale-0 group-hover:scale-100"
+                                 " absolute text-sm w-full h-full flex justify-center items-center"
                               }
                            >
-                              <li>
-                                 monitors database activities and <br />{" "}
-                                 collects data
-                              </li>
-                              <li>
-                                 traces object accessed or DDL & <br /> DML
-                                 statements executed by a <br /> user
-                              </li>
-                              <li>records all actions in logs</li>
-                           </ul>
+                              <ul>
+                                 <li>
+                                    monitors database activities and <br />{" "}
+                                    collects data
+                                 </li>
+                                 <li>
+                                    traces object accessed or DDL & <br /> DML
+                                    statements executed by a <br /> user
+                                 </li>
+                                 <li>records all actions in logs</li>
+                              </ul>
+                           </div>
                         )}
                      </Transition>
                   </div>
@@ -287,7 +311,10 @@ export default function Home() {
             >
                <Title order={1}>Agens Enterprise Package</Title>
 
-               <Text align={"center"}>
+               <Text
+                  align={"center"}
+                  className={"text-color"}
+               >
                   Agens Enterprise Package comes with a high availability
                   management server that <br />
                   supports backup and data monitoring dashboard that helps
@@ -311,6 +338,7 @@ export default function Home() {
                         <Text
                            display={"inline"}
                            color={"blue"}
+                           className={"heading-color"}
                         >
                            {" "}
                            HA Clustering
@@ -318,11 +346,19 @@ export default function Home() {
                         <Text
                            display={"inline"}
                            fw={400}
+                           className={"heading-color"}
                         >
                            – Failover/Failback, Load-balancing
                         </Text>
                      </Title>
                      <Image src={agensmanager} />
+                     <Text
+                        size={20}
+                        className={"text-color"}
+                        my={8}
+                     >
+                        Replicaton
+                     </Text>
                   </div>
                   <div
                      className={

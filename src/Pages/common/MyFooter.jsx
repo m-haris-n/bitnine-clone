@@ -30,12 +30,12 @@ export default function MyFooter() {
          >
             <table className={"w-full text-left text-light py-10"}>
                <tr>
-                  <th>PRODUCTS</th>
-                  <th className={"text-to-blue-transition"}>USE CASES</th>
-                  <th className={"text-to-blue-transition"}>SERVICES</th>
-                  <th>RESOURCES</th>
-                  <th className={"text-to-blue-transition"}>BLOG</th>
-                  <th>COMPANY</th>
+                  <th className={"w-1/6"}>PRODUCTS</th>
+                  <th className={"text-to-blue-transition w-1/6"}>USE CASES</th>
+                  <th className={"text-to-blue-transition w-1/6"}>SERVICES</th>
+                  <th className={"w-1/6"}>RESOURCES</th>
+                  <th className={"text-to-blue-transition w-1/6"}>BLOG</th>
+                  <th className={"w-1/6"}>COMPANY</th>
                </tr>
                <tr>
                   <td className={"text-to-blue-transition"}>
