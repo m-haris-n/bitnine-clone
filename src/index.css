@@ -10,6 +10,12 @@
    .text-light {
       @apply text-[#ababab];
    }
+   .heading-color {
+      @apply text-[#444444];
+   }
+   .text-color {
+      @apply text-[#666666];
+   }
 }
 
 th {

@@ -51,11 +51,13 @@ export default function Home() {
                />
                <Title
                   order={3}
-                  my={"2.5rem"}
+                  mt={"2.5rem"}
+                  mb={"1rem"}
+                  className={"heading-color"}
                >
                   An integration of Bitnine’s DB technology and PG expertise
                </Title>
-               <div className={"flex flex-col gap-6"}>
+               <div className={"flex flex-col gap-6 text-color"}>
                   <Text align={"center"}>
                      AgensSQL is an all-new relational DBMS based on PostgreSQL,
                      with years of expertise <br /> and knowledge accumulated
@@ -101,7 +103,7 @@ export default function Home() {
             </div>
          </Container>
          <section
-            className={"flex items-center justify-center py-32  bg-indigo-100"}
+            className={"flex items-center justify-center py-32  bg-[#f3f6fb]"}
          >
             <Image
                src={enterPack}
@@ -118,7 +120,10 @@ export default function Home() {
                }
             >
                <Title order={1}>Key features</Title>
-               <Text align={"center"}>
+               <Text
+                  align={"center"}
+                  className={"text-color"}
+               >
                   Manage your data with Agens Enterprise Package <br />
                   Essential enterprise features such as high availability and
                   sharding are provided
@@ -126,7 +131,7 @@ export default function Home() {
                <Image src={features} />
             </section>
          </Container>
-         <section className={"bg-indigo-100 py-24"}>
+         <section className={"bg-[#f3f6fb] py-24"}>
             <Container
                size={"lg"}
                className={
@@ -137,10 +142,11 @@ export default function Home() {
                <Title
                   order={3}
                   underline={true}
+                  className={"heading-color"}
                >
                   Enhanced Data Security
                </Title>
-               <Text>
+               <Text className={"text-color"}>
                   AgensSQL is a PostgreSQL-based DBMS <br />
                   that guarantees optimal security and stability.
                </Text>
